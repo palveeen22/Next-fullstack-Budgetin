@@ -20,22 +20,22 @@ model User {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Budget    Budget?
+  Budget    Budget[]
 }
 
 model Budget {
-  id            Int      @id @default(autoincrement())
-  userId        Int      @unique
-  user          User     @relation(fields: [userId], references: [id])
+  id            Int       @id @default(autoincrement())
+  userId        Int       @unique
+  user          User      @relation(fields: [userId], references: [id])
   month         DateTime
   year          DateTime
   totalIncome   BigInt
   totalExpenses BigInt
   totalSavings  BigInt
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  Receive       Receive?
-  Spend         Spend?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  Receive       Receive[]
+  Spend         Spend[]
 }
 
 model Receive {
